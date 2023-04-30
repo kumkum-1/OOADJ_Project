@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="header :: myHeader"></div>
+</head>
+<body class="sb-nav-fixed">
+	<div th:replace="navbar :: myNavbar"></div>
+	<div id="layoutSidenav">
+		<div th:replace="sidebar :: mySidebar"></div>
+		<div id="layoutSidenav_content">
+			<div class="container">
+				<br>
+				<img src="https://t3.ftcdn.net/jpg/05/42/85/06/360_F_542850615_1B16r8qsUa5oR8zq4td8wqi911uczewS.jpg" width="15%" height="15%">
+
+				<hr>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+					<li class="breadcrumb-item active">Delete Inventory Item</li>
+				</ol>
+				<h3>Are you sure you want to delete this Item?</h3>
+				<div>
+					<hr />
+					<dl class="dl-horizontal">
+						<dt>ID</dt>
+						<dd th:text="${itemDto.itemId}"></dd>
+						<dt>Name</dt>
+						<dd th:text="${itemDto.itemName}"></dd>
+						<dt>Price</dt>
+						<dd th:text="${itemDto.itemPrice}"></dd>
+						<dt>Quantity</dt>
+						<dd th:text="${itemDto.itemQuantity}"></dd>
+						<dt>Fine Rate</dt>
+						<dd th:text="${itemDto.fineRate}"></dd>
+						<dt>Invoice Number</dt>
+						<dd th:text="${itemDto.invoiceNumber}"></dd>
+						<dt>Vendor Name</dt>
+						<dd th:text="${itemDto.vendorName}"></dd>
+						<dt>Item Type</dt>
+						<dd th:text="${itemDto.itemType}"></dd>
+					</dl>
+				</div>
+				<form th:action="@{/ItemDelete/{id}(id=${itemDto.itemId})}"
+					method="post">
+					<button type="submit" class="btn btn-danger">Delete</button>
+					<a th:href="@{/ItemView}" class="btn btn-secondary active"> Go
+						Back</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
