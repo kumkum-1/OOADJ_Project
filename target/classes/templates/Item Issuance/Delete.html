@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<div th:replace="header :: myHeader"></div>
+	</head>
+	<body class="sb-nav-fixed">
+		<div th:replace="navbar :: myNavbar"></div>
+		<div id="layoutSidenav">
+			<div th:replace="sidebar :: mySidebar"></div>
+			<div id="layoutSidenav_content">
+				<div class="container">
+					<br>
+						<img src="https://t3.ftcdn.net/jpg/05/42/85/06/360_F_542850615_1B16r8qsUa5oR8zq4td8wqi911uczewS.jpg" width="15%" height="15%">
+
+					<hr>
+					<ol class="breadcrumb mb-4">
+						<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+						<li class="breadcrumb-item active">Item Issuance Deletion</li>
+					</ol>
+					<h3>Are you sure you want to delete this Item?</h3>
+					<div>
+						<hr />
+						<dl class="dl-horizontal">
+							<dt> Item Issuance ID</dt>
+							<dd th:text="${itemIssuanceDto.id}"></dd>
+							<dt> Item ID</dt>
+							<dd th:text="${itemIssuanceDto.itemId}"></dd>
+							<dt> Borrower ID</dt>
+							<dd th:text="${itemIssuanceDto.borrowerId}"></dd>
+							<dt> Loan Duration</dt>
+							<dd th:text="${itemIssuanceDto.loanDuration}"></dd>
+							<dt> Issue Date</dt>
+							<dd th:text="${itemIssuanceDto.issueDate}"></dd>
+							<dt> Due Date</dt>
+							<dd th:text="${itemIssuanceDto.dueDate}"></dd>
+							<dt> Fine Amount</dt>
+							<dd th:text="${itemIssuanceDto.fineAmount}"></dd>
+						</dl>
+					</div>
+					<form th:action="@{/ItemIssuanceDelete/{id}(id=${itemIssuanceDto.id})}" method="post">
+						<button type="submit" class="btn btn-danger">Delete</button>
+						<a th:href="@{/ItemIssuanceView}" class="btn btn-secondary active"> Go Back</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
